@@ -13,11 +13,11 @@
 Route::view('/', 'pages.home');
 Route::view('contact', 'pages.contact');
 Route::view('about', 'pages.about');
-Route::view('order', 'pages.order');
+Route::get('order', 'FormController@cakeFlavour');
 
 Route::view('/admin', 'admin.admin');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminController@admin')->middleware('admin')->name('admin');
+Route::get('/admin', 'HomeController@admin')->middleware('admin')->name('admin');

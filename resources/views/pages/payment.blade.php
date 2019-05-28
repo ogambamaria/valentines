@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('Order') }}</div>
+        <div class="card-header">{{ __('Payment') }}</div>
 
         <div class="card-body">
           <form method="POST" action="">
@@ -15,9 +15,7 @@
               <label for="cakeFlavour" class="col-md-4 col-form-label text-md-right">{{ __('Cake Flavour') }}</label>
               <div class="col-md-6">
                 <select class="form-control-sm" id="cakeFlavour" name="cakeFlavour" required autofocus>
-                  @<?php foreach ($flavours as $flavour): ?>
-                    <option value="">{{$flavour->flavour}}</option>
-                  <?php endforeach; ?>
+                  {{}}
                 </select>
               </div>
             </div>
