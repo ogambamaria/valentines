@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSizesTable extends Migration
+class CreateIcingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sizes', function (Blueprint $table) {
-          $table->bigIncrements('sid');
-          $table->string('size');
-          $table->float('sizePrice',10,2);
+        Schema::create('icings', function (Blueprint $table) {
+          $table->bigIncrements('icing_id');
+          $table->string('icing');
+          $table->float('icingPrice',10,2);
+          $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateSizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sizes');
+        Schema::dropIfExists('icings');
     }
 }

@@ -16,7 +16,7 @@ class CreateFlavoursTable extends Migration
         Schema::create('flavours', function (Blueprint $table) {
             $table->bigIncrements('fid');
             $table->string('flavour');
-            $table->float('flavourPrice',5,2);
+            $table->float('flavourPrice',10,2);
             $table->timestamps();
         });
     }

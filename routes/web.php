@@ -13,7 +13,8 @@
 Route::view('/', 'pages.home');
 Route::view('contact', 'pages.contact');
 Route::view('about', 'pages.about');
-Route::get('order', 'FormController@cakeFlavour');
+Route::get('order', 'OrderController@index');
+
 
 Route::view('/admin', 'admin.admin');
 

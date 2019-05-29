@@ -16,7 +16,7 @@ class CreateAddonsTable extends Migration
         Schema::create('addons', function (Blueprint $table) {
           $table->bigIncrements('aid');
           $table->string('addons');
-          $table->float('addonPrice',5,2);
+          $table->float('addonPrice',10,2);
         });
     }
 

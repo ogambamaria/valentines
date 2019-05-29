@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Flavour;
+use App\Size;
+use App\Icing;
+use App\Addon;
 
-class FlavoursController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,12 @@ class FlavoursController extends Controller
      */
     public function index()
     {
-        //
+        $flavours = Flavour::all();
+        $sizes = Size::all();
+        $icings = Icing::all();
+        $addons = Addon::all();
+
+        return view('pages.order',compact(['flavours','sizes','icings','addons']));
     }
 
     /**

@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
           $table->bigInteger('order_id');
           $table->string('name');
           $table->string('email');
-          $table->float('total',8,2);
+          $table->float('total',15,2);
           $table->timestamps();
         });
     }
