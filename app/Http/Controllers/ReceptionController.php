@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Flavour;
-use App\Size;
-use App\Icing;
-use App\Addon;
+use App\Order;
 
-class OrderController extends Controller
+class ReceptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +13,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $flavours = Flavour::all();
-        $sizes = Size::all();
-        $icings = Icing::all();
-        $addons = Addon::all();
+      $orders = Orders::all();
 
-        return view('pages.order',compact(['flavours','sizes','icings','addons']));
+      return view('reception.reception',['orders'=>$orders]);
     }
 
     /**
@@ -88,12 +82,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addition(){
-      /*
-      $fprice = Flavour::select('flavourPrice');
-      $total = $fprice;
-      return view('pages.order',[$total]); */
     }
 }

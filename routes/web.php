@@ -14,6 +14,7 @@ Route::view('/', 'pages.home');
 Route::view('contact', 'pages.contact');
 Route::view('about', 'pages.about');
 Route::get('order', 'OrderController@index');
+Route::get('reception', 'ReceptionController@index');
 
 
 Route::view('/admin', 'admin.admin');
@@ -22,3 +23,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@admin')->middleware('admin')->name('admin');
+Route::get('/reception', 'HomeController@reception')->middleware('reception')->name('reception');

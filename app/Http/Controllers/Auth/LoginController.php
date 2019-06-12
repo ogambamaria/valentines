@@ -30,6 +30,9 @@ class LoginController extends Controller
       if ($user->isAdmin == 1) {
         return redirect('/admin');
       }
+      if ($user->isAdmin == 2) {
+        return redirect('/reception');
+      }
         return redirect('/home');
     }
 

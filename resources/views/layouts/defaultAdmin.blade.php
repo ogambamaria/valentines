@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    @include('includes.headAdmin')
+    @include('includes.head')
 </head>
 <body id="page-top">
   <header>
@@ -10,7 +10,6 @@
   <div id="main">
     <div class="container-fluid">
       <div class="row">
-        @include('includes.sidebarAdmin')
         @yield('content')
       </div>
     </div>

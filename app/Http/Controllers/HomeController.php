@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
       return view('admin.admin');
     }
+    
+    public function reception()
+    {
+      return view('reception.reception');
+    }
 }

@@ -11,13 +11,15 @@
           <form method="POST" action="">
             @csrf
 
-            <div class="form-group row">
+            <div class="form-group row" v-for="(item, i) in items">
               <label for="cakeFlavour" class="col-md-4 col-form-label text-md-right">{{ __('Cake Flavour') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="cakeFlavour" name="cakeFlavour" required autofocus>
+                <select class="form-control-sm" id="flavour" name="flavour" required autofocus>
+                  <option value="">{{ __('Select') }}</option>
                   @foreach ($flavours as $flavour):
-                    <option value="">{{$flavour->flavour}}</option>
+                    <option value="{{$flavour->fid}}">{{$flavour->flavour}} - {{__('Ksh ')}} {{number_format($flavour->flavourPrice, 0)}}</option>
                   @endforeach
+                  <input type="hidden" id="flavour" name="flavour" value="{{$flavour->flavourPrice}}">
                 </select>
               </div>
             </div>
@@ -25,9 +27,10 @@
             <div class="form-group row">
               <label for="cakeSize" class="col-md-4 col-form-label text-md-right">{{ __('Cake Size') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="cakeSize" name="cakeSize" required autofocus>
+                <select class="form-control-sm" id="size" name="size" required autofocus>
+                  <option value="">{{ __('Select') }}</option>
                   @foreach ($sizes as $size):
-                    <option value="">{{$size->size}}</option>
+                    <option value="">{{$size->size}} - {{__('Ksh ')}} {{number_format($size->sizePrice, 0)}}</option>
                   @endforeach
                 </select>
               </div>
@@ -37,25 +40,11 @@
               <label for="icing" class="col-md-4 col-form-label text-md-right">{{ __('Type of Icing') }}</label>
               <div class="col-md-6">
                 <select class="form-control-sm" id="icing" name="icing" required autofocus>
+                  <option value="">{{ __('Select') }}</option>
                   @foreach ($icings as $icing):
-                    <option value="">{{$icing->icing}}</option>
+                    <option value="">{{$icing->icing}} - {{__('Ksh ')}} {{number_format($icing->icingPrice, 0)}}</option>
                   @endforeach
                 </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="addons" class="col-md-4 col-form-label text-md-right">{{ __('Cake Addons') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="addons" name="addons" autofocus>
-                  @foreach ($addons as $addon):
-                    <option value="">{{$addon->addon}}</option>
-                  @endforeach
-                </select>
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  Edible Tasty Prints (Cake Addons) are sheets of frosting that can be imprinted with any image using edible inks.
-                  Optional.
-                </small>
               </div>
             </div>
 
@@ -64,21 +53,8 @@
               <div class="col-md-6">
                 <input type="file" class="form-control-file" id="addonImage">
                 <small id="addonsHelpBlock" class="form-text text-muted">
-                  Image that will be used for the cake addon or edible print.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="cakeShape" class="col-md-4 col-form-label text-md-right">{{ __('Cake Shape') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="cakeFlavour" name="cakeFlavour" autofocus>
-                  <option>Round</option>
-                  <option>Rectangle</option>
-                  <option>Square</option>
-                </select>
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  This is optional. The standard cake shape is a square. Select this if you do not have a specific design.
+                  Image that will be used for the cake addon or edible print. Edible Tasty Prints (Cake Addons) are sheets of frosting that can be imprinted with any image using edible inks.
+                  Optional.
                 </small>
               </div>
             </div>
@@ -86,7 +62,7 @@
             <div class="form-group row">
               <label for="design" class="col-md-4 col-form-label text-md-right">{{ __('Optional Design for the Cake') }}</label>
               <div class="col-md-6">
-                <input type="file" class="form-control-file" id="design">
+                <input type="file" class="form-control-file" id="design" onclick="calculateTotal()">
                 <small id="designHelpBlock" class="form-text text-muted">
                   Optional cake design. Cannot be used with cake addons. Select this if you have a specific design.
                 </small>
@@ -104,16 +80,15 @@
             </div>
 
             <div class="form-group row">
-              <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total Price: ') }}</label>
-              <div class="col-md-6">
-                <input type="text" readonly id="total" class="form-control-plaintext" value="Ksh 2300">
+              <div id="totalPrice" class="col-md-6">
+                <p class="total"><span class="total" name="total" id="total"></span> </p>
               </div>
             </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                  {{ __('Login') }}
+                  {{ __('Payment') }}
                 </button>
               </div>
             </div>
