@@ -14,8 +14,15 @@ Route::view('/', 'pages.home');
 Route::view('contact', 'pages.contact');
 Route::view('about', 'pages.about');
 Route::get('order', 'OrderController@index');
-Route::get('reception', 'ReceptionController@index');
+Route::post('order', 'OrderController@store');
 
+Route::view('payment', 'pages.payment');
+Route::view('confirmation', 'pages.confirmation');
+
+Route::get('orders', 'ReceptionController@index');
+Route::get('orders/{id}', 'ReceptionController@show');
+Route::get('update/{id}', 'ReceptionController@showDetails');
+Route::put('/update/{id}', 'ReceptionController@update');
 
 Route::view('/admin', 'admin.admin');
 

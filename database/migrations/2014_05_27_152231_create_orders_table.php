@@ -15,17 +15,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
             $table->string('email');
             $table->string('flavour');
             $table->string('size');
             $table->string('icing');
-            $table->string('addon');
-            $table->binary('addonImage');
-            $table->string('shape');
-            $table->binary('design');
+            $table->binary('addon');
             $table->string('inscription');
-            $table->string('status')->default('pending');
+            $table->string('date');
+            $table->enum('status', ['Pending','Completed'])->nullable(false)->default('Pending');
             $table->timestamps();
         });
     }

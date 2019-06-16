@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAddonsTable extends Migration
+class CreateSessionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAddonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('addons', function (Blueprint $table) {
-          $table->bigIncrements('aid');
-          $table->string('addons');
-          $table->float('addonPrice',10,2);
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('email');
+            $table->integer('last_activity');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateAddonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addons');
+        Schema::dropIfExists('sessions');
     }
 }

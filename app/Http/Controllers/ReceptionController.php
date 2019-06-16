@@ -13,10 +13,11 @@ class ReceptionController extends Controller
      */
     public function index()
     {
-      $orders = Orders::all();
+      $orders = Order::all();
 
-      return view('reception.reception',['orders'=>$orders]);
+      return view('reception.orders',compact(['orders']));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +48,13 @@ class ReceptionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('reception.details', ['order' => Order::findOrFail($id)]);
+    }
+
+    public function showDetails($id)
+    {
+
+        return view('reception.update', ['order' => Order::findOrFail($id)]);
     }
 
     /**
@@ -68,9 +75,24 @@ class ReceptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+      $request['id'] = $id;
+      return $request;
+
+      $validateData = $request->validate([
+        'status' => 'required'
+      ]);
+
+      $order = Order::find($id);
+
+      if (isset($request['status'])) {
+        $order->status = $request['status'];
+      }
+
+      $order->save();
+
+      return redirect('reception.update' . $id);
     }
 
     /**

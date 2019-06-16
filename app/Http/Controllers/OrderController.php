@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 use App\Flavour;
 use App\Size;
 use App\Icing;
-use App\Addon;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,12 +17,12 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $flavours = Flavour::all();
         $sizes = Size::all();
         $icings = Icing::all();
-        $addons = Addon::all();
 
-        return view('pages.order',compact(['flavours','sizes','icings','addons']));
+        return view('pages.order',compact(['users','flavours','sizes','icings']));
     }
 
     /**
@@ -31,7 +32,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -42,7 +43,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $order = new Order;
+      $order->email = $request->email;
+      $order->flavour = $request->flavour;
+      $order->size = $request->size;
+      $order->icing = $request->icing;
+      $order->addon = $request->addon;
+      $order->inscription = $request->inscription;
+      $order->date = $request->date;
+
+      $order->save();
+
+      return redirect('payment');
     }
 
     /**
@@ -53,7 +65,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

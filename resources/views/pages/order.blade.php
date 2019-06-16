@@ -11,15 +11,16 @@
           <form method="POST" action="">
             @csrf
 
-            <div class="form-group row" v-for="(item, i) in items">
+            <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+
+            <div class="form-group row">
               <label for="cakeFlavour" class="col-md-4 col-form-label text-md-right">{{ __('Cake Flavour') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="flavour" name="flavour" required autofocus>
+                <select class="form-control-sm totalPrice" id="flavourP" name="flavour" required autofocus>
                   <option value="">{{ __('Select') }}</option>
                   @foreach ($flavours as $flavour):
-                    <option value="{{$flavour->fid}}">{{$flavour->flavour}} - {{__('Ksh ')}} {{number_format($flavour->flavourPrice, 0)}}</option>
+                    <option value="{{$flavour->flavourPrice,$flavour->flavour}}">{{$flavour->flavour}} - {{__('Ksh ')}} {{number_format($flavour->flavourPrice, 0)}}</option>
                   @endforeach
-                  <input type="hidden" id="flavour" name="flavour" value="{{$flavour->flavourPrice}}">
                 </select>
               </div>
             </div>
@@ -27,10 +28,10 @@
             <div class="form-group row">
               <label for="cakeSize" class="col-md-4 col-form-label text-md-right">{{ __('Cake Size') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="size" name="size" required autofocus>
+                <select class="form-control-sm totalPrice" id="sizeP" name="size" required autofocus>
                   <option value="">{{ __('Select') }}</option>
                   @foreach ($sizes as $size):
-                    <option value="">{{$size->size}} - {{__('Ksh ')}} {{number_format($size->sizePrice, 0)}}</option>
+                    <option value="{{$size->sizePrice,$size->size}}">{{$size->size}} - {{__('Ksh ')}} {{number_format($size->sizePrice, 0)}}</option>
                   @endforeach
                 </select>
               </div>
@@ -39,19 +40,19 @@
             <div class="form-group row">
               <label for="icing" class="col-md-4 col-form-label text-md-right">{{ __('Type of Icing') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="icing" name="icing" required autofocus>
+                <select class="form-control-sm totalPrice" id="icingP" name="icing" required autofocus>
                   <option value="">{{ __('Select') }}</option>
                   @foreach ($icings as $icing):
-                    <option value="">{{$icing->icing}} - {{__('Ksh ')}} {{number_format($icing->icingPrice, 0)}}</option>
+                    <option value="{{$icing->icingPrice,$icing->icing}}">{{$icing->icing}} - {{__('Ksh ')}} {{number_format($icing->icingPrice, 0)}}</option>
                   @endforeach
                 </select>
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="addonImage" class="col-md-4 col-form-label text-md-right">{{ __('Design Image for Cake Addon') }}</label>
+              <label for="addon" class="col-md-4 col-form-label text-md-right">{{ __('Design Image for Cake Addon') }}</label>
               <div class="col-md-6">
-                <input type="file" class="form-control-file" id="addonImage">
+                <input type="file" class="form-control-file" name="addon" id="addon">
                 <small id="addonsHelpBlock" class="form-text text-muted">
                   Image that will be used for the cake addon or edible print. Edible Tasty Prints (Cake Addons) are sheets of frosting that can be imprinted with any image using edible inks.
                   Optional.
@@ -60,35 +61,33 @@
             </div>
 
             <div class="form-group row">
-              <label for="design" class="col-md-4 col-form-label text-md-right">{{ __('Optional Design for the Cake') }}</label>
-              <div class="col-md-6">
-                <input type="file" class="form-control-file" id="design" onclick="calculateTotal()">
-                <small id="designHelpBlock" class="form-text text-muted">
-                  Optional cake design. Cannot be used with cake addons. Select this if you have a specific design.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
               <label for="inscription" class="col-md-4 col-form-label text-md-right">{{ __('Inscription plus Colour') }}</label>
               <div class="col-md-6">
-                <input type="text" id="inscription" class="form-control" placeholder="eg Happy Birthday - written in red">
-                <small id="addonsHelpBlock" class="form-text text-muted">
+                <input type="text" id="inscription" name="inscription" class="form-control" placeholder="eg Happy Birthday - written in red">
+                <small id="inscriptHelpBlock" class="form-text text-muted">
                   The inscription to be put on the cake, and the colour of the inscription.
                 </small>
               </div>
             </div>
 
             <div class="form-group row">
-              <div id="totalPrice" class="col-md-6">
-                <p class="total"><span class="total" name="total" id="total"></span> </p>
+              <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Pickup Date') }}</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="date" id="datepicker">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total') }}</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" readonly name="total" value="Ksh" id="total">
               </div>
             </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                  {{ __('Payment') }}
+                  {{ __('Proceed to Payment') }}
                 </button>
               </div>
             </div>

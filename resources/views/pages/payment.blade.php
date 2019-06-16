@@ -5,113 +5,22 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('Payment') }}</div>
+        <div class="card-header">{{ __('Pay with Paypal') }}</div>
 
         <div class="card-body">
           <form method="POST" action="">
             @csrf
-
             <div class="form-group row">
-              <label for="cakeFlavour" class="col-md-4 col-form-label text-md-right">{{ __('Cake Flavour') }}</label>
+              <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total') }}</label>
               <div class="col-md-6">
-                <select class="form-control-sm" id="cakeFlavour" name="cakeFlavour" required autofocus>
-                  {{}}
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="cakeSize" class="col-md-4 col-form-label text-md-right">{{ __('Cake Size') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="cakeSize" name="cakeSize" required autofocus>
-                  <option>0.5 kg</option>
-                  <option>1.0 kg</option>
-                  <option>1.5 kg</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="icing" class="col-md-4 col-form-label text-md-right">{{ __('Type of Icing') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="icing" name="icing" required autofocus>
-                  <option>Soft</option>
-                  <option>Hard</option>
-                  <option>Fresh Cream</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="addons" class="col-md-4 col-form-label text-md-right">{{ __('Cake Addons') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="addons" name="addons" autofocus>
-                  <option>A6 - Ksh300</option>
-                  <option>A5 - Ksh600</option>
-                  <option>A4 - Ksh900</option>
-                </select>
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  Edible Tasty Prints (Cake Addons) are sheets of frosting that can be imprinted with any image using edible inks.
-                  Optional.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="addonImage" class="col-md-4 col-form-label text-md-right">{{ __('Design Image for Cake Addon') }}</label>
-              <div class="col-md-6">
-                <input type="file" class="form-control-file" id="addonImage">
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  Image that will be used for the cake addon or edible print.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="cakeShape" class="col-md-4 col-form-label text-md-right">{{ __('Cake Shape') }}</label>
-              <div class="col-md-6">
-                <select class="form-control-sm" id="cakeFlavour" name="cakeFlavour" autofocus>
-                  <option>Round</option>
-                  <option>Rectangle</option>
-                  <option>Square</option>
-                </select>
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  This is optional. The standard cake shape is a square. Select this if you do not have a specific design.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="design" class="col-md-4 col-form-label text-md-right">{{ __('Optional Design for the Cake') }}</label>
-              <div class="col-md-6">
-                <input type="file" class="form-control-file" id="design">
-                <small id="designHelpBlock" class="form-text text-muted">
-                  Optional cake design. Cannot be used with cake addons. Select this if you have a specific design.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="inscription" class="col-md-4 col-form-label text-md-right">{{ __('Inscription plus Colour') }}</label>
-              <div class="col-md-6">
-                <input type="text" id="inscription" class="form-control" placeholder="eg Happy Birthday - written in red">
-                <small id="addonsHelpBlock" class="form-text text-muted">
-                  The inscription to be put on the cake, and the colour of the inscription.
-                </small>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total Price: ') }}</label>
-              <div class="col-md-6">
-                <input type="text" readonly id="total" class="form-control-plaintext" value="Ksh 2300">
+                <input type="text" class="form-control" readonly name="total" value="Ksh" id="total">
               </div>
             </div>
 
             <div class="form-group row mb-0">
               <div class="col-md-8 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                  {{ __('Proceed to Payment') }}
+                  {{ __('Pay') }}
                 </button>
               </div>
             </div>
