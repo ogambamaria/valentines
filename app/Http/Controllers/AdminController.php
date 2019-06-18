@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Auth;
-use App\Mail\OrderMail;
-use App\Flavour;
-use App\Size;
-use App\Icing;
 use App\Order;
+use App\Payment;
+use App\User;
 
-class OrderController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +16,23 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $flavours = Flavour::all();
-        $sizes = Size::all();
-        $icings = Icing::all();
+      $orders = Order::all();
 
-        return view('pages.order',compact(['users','flavours','sizes','icings']));
+      return view('admin.orderDetails',compact(['orders']));
+    }
+
+    public function index2()
+    {
+      $payments = Payment::all();
+
+      return view('admin.paymentDetails',compact(['payments']));
+    }
+
+    public function index3()
+    {
+      $users = User::all();
+
+      return view('admin.users',compact(['users']));
     }
 
     /**
@@ -35,7 +42,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -46,21 +53,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-      $order = new Order();
-      $order->email = $request->email;
-      $order->flavour = $request->flavour;
-      $order->size = $request->size;
-      $order->icing = $request->icing;
-      $order->addon = $request->addon;
-      $order->inscription = $request->inscription;
-      $order->date = $request->date;
-
-      $order->save();
-
-      Mail::to($order->email)->send(new OrderMail($order));
-
-      return redirect('payment');
+        //
     }
 
     /**
@@ -71,7 +64,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -106,12 +99,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addition(){
-      /*
-      $fprice = Flavour::select('flavourPrice');
-      $total = $fprice;
-      return view('pages.order',[$total]); */
     }
 }
