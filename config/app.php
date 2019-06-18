@@ -165,8 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-         \Safaricom\Mpesa\MpesaServiceProvider::class,
-         SmoDav\Mpesa\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,11 +225,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Mpesa'=> \Safaricom\Mpesa\MpesaServiceProvider::class,
-        'STK'=> SmoDav\Mpesa\Laravel\Facades\STK::class,
-        'Simulate'=> SmoDav\Mpesa\Laravel\Facades\Simulate::class,
-        'Registrar'=> SmoDav\Mpesa\Laravel\Facades\Registrar::class,
-        'Identity'=> SmoDav\Mpesa\Laravel\Facades\Identity::class,
 
     ],
 

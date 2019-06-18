@@ -150,11 +150,10 @@ class Gate implements GateContract
     public function resource($name, $class, array $abilities = null)
     {
         $abilities = $abilities ?: [
-            'viewAny' => 'viewAny',
-            'view'    => 'view',
-            'create'  => 'create',
-            'update'  => 'update',
-            'delete'  => 'delete',
+            'view'   => 'view',
+            'create' => 'create',
+            'update' => 'update',
+            'delete' => 'delete',
         ];
 
         foreach ($abilities as $ability => $method) {

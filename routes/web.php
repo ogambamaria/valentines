@@ -26,21 +26,8 @@ Route::put('/update/{id}', 'ReceptionController@update');
 
 Route::view('/admin', 'admin.admin');
 
-//paypal info and controller routes
-Route::get('/paypal/{order?}','PayPalController@form')->name('order.paypal');
-Route::post('/checkout/payment/{order}/paypal','PayPalController@checkout')->name('checkout.payment.paypal');
-Route::get('/paypal/checkout/{order}/completed','PayPalController@completed')->name('paypal.checkout.completed');
-Route::get('/paypal/checkout/{order}/cancelled','PayPalController@cancelled')->name('paypal.checkout.cancelled');
-Route::post('/webhook/paypal/{order?}/{env?}','PayPalController@webhook')->name('webhook.paypal.ipn');
-Route::get('payment-completed/{order}','PayPalController@paymentCompleted')->name('paymentCompleted');
-//end of paypal info and controller routes
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'HomeController@admin')->middleware('admin')->name('admin');
 Route::get('/reception', 'HomeController@reception')->middleware('reception')->name('reception');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
