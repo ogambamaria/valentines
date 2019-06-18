@@ -1,43 +1,47 @@
 @extends('layouts.defaultAdmin')
 @section('content')
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
+@if(\Session::has('error'))
+<div class="alert alert-danger">
+{{\Session::get('error')}}
+</div>
+@endif
+  <style>
+    a.custom,
+    a.custom:hover {
+    color: inherit;
+    }
+  </style>
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Admin</h2>
+          <h3 class="section-subheading text-muted"></h3>
         </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <a href="users" class="custom">
+            <div>
+              <h4 class="service-heading">Users</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="orderDetails" class="custom">
+            <div>
+              <h4 class="service-heading">Orders</h4>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="paymentDetails" class="custom">
+            <div>
+              <h4 class="service-heading">Payments</h4>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="container-fluid">
-      <!---sample table--->
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-</main>
+  </section>
 @stop
