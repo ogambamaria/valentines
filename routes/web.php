@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +11,8 @@
 |
 */
 Route::view('/', 'pages.home');
-Route::view('birthdays', 'pages.birthdays');
-Route::view('weddings', 'pages.weddings');
-Route::view('anniversaries', 'pages.anniversaries');
-Route::view('corporate', 'pages.cooperate');
-
+Route::view('contact', 'pages.contact');
+Route::view('about', 'pages.about');
 Route::get('order', 'OrderController@index');
 Route::post('order', 'OrderController@store');
 
@@ -26,12 +24,7 @@ Route::get('orders/{id}', 'ReceptionController@show');
 Route::get('update/{id}', 'ReceptionController@showDetails');
 Route::put('/update/{id}', 'ReceptionController@update');
 
-Route::get('mail', 'OrderController@store');
-
 Route::view('/admin', 'admin.admin');
-Route::get('orderDetails', 'AdminController@index');
-Route::get('paymentDetails', 'AdminController@index2');
-Route::get('users', 'AdminController@index3');
 
 //paypal info and controller routes
 Route::get('/paypal/{order?}','PayPalController@form')->name('order.paypal');

@@ -1,4 +1,4 @@
-@extends('layouts.defaultAdmin')
+@extends('layouts.default')
 @section('content')
 @if(\Session::has('error'))
 <div class="alert alert-danger">

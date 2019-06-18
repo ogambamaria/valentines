@@ -1,15 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Auth;
-use App\Mail\OrderMail;
 use App\Flavour;
 use App\Size;
 use App\Icing;
 use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -46,8 +43,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-      $order = new Order();
+      $order = new Order;
       $order->email = $request->email;
       $order->flavour = $request->flavour;
       $order->size = $request->size;
@@ -57,8 +53,6 @@ class OrderController extends Controller
       $order->date = $request->date;
 
       $order->save();
-
-      Mail::to($order->email)->send(new OrderMail($order));
 
       return redirect('payment');
     }

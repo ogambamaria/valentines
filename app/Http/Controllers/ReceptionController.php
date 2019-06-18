@@ -78,6 +78,7 @@ class ReceptionController extends Controller
     public function update($id, Request $request)
     {
       $request['id'] = $id;
+      return $request;
 
       $validateData = $request->validate([
         'status' => 'required'
@@ -91,7 +92,7 @@ class ReceptionController extends Controller
 
       $order->save();
 
-      return back();
+      return redirect('reception.update' . $id);
     }
 
     /**
