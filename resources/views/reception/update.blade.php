@@ -20,7 +20,7 @@
             <div class="form-group row">
               <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
               <div class="col-md-6">
-                <select class="form-control" id="todo-status" name="todo-status" required>
+                <select class="form-control" id="status" name="status" required>
                 @foreach (['Pending', 'Completed'] as $status)
                   @if ($status === $order->status)
                     <option value="{{ $status }}" selected>{{ $status }}</option>
@@ -35,7 +35,7 @@
             <div class="form-group row">
               <label for="send" class="col-md-4 col-form-label text-md-right">{{ __('Send confirmation email') }}</label>
               <div class="col-md-6">
-
+                <a href="/reception/mail">Send Email</a>
               </div>
             </div>
 
