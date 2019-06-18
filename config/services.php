@@ -14,15 +14,6 @@ return [
     |
     */
 
-
-    'paypal' => [
-        'username' => env('PAYPAL_USERNAME'),
-        'password' => env('PAYPAL_PASSWORD'),
-        'signature' => env('PAYPAL_SIGNATURE'),
-        'sandbox' => env('PAYPAL_SANDBOX'),
-    ],
-
-    
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

@@ -26,9 +26,6 @@
             </div>
           </form>
         </div>
-        <div class="container">
-          <a class="btn btn-primary" style="width:100px; height:40px; color:white;" href="paypal/3">PayPal</a>
-        </div>
       </div>
     </div>
   </div>
